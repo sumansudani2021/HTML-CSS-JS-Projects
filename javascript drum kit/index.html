@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="keys" >
+        <div class="key" data-key="65">
+            <kbd>A</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key" data-key="83">
+            <kbd>S</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key"  data-key="68">
+            <kbd>D</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key"  data-key="70">
+            <kbd>F</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key"  data-key="71">
+            <kbd>G</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key"  data-key="72">
+            <kbd>H</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key"  data-key="74">
+            <kbd>J</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key"  data-key="75">
+            <kbd>K</kbd>
+            <span>BOOm</span>
+        </div>
+        <div class="key" data-key="76">
+            <kbd>L</kbd>
+            <span>BOOm</span>
+        </div>
+    </div> 
+    <audio data-key="65" src="/Music/https___bestringtones.net_music_Astronomia.mp3 "></audio>
+    <audio data-key="83" src="/Music/https___bestringtones.net_music_Beautiful world - guitar.mp3"></audio>
+    <audio data-key="68" src="/Music/https___bestringtones.net_music_Maroon_5_-_Payphone_-_Fingerstyle_Guitar_Cover_.mp3"></audio>
+    <audio data-key="70" src="/Music/https___bestringtones.net_music_Youve_Got_A_Friend_In Me.mp3"></audio>
+    <audio data-key="71" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
+    <audio data-key="72" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
+    <audio data-key="74" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
+    <audio data-key="75" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
+    <audio data-key="76" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
+    <script>
+        window.addEventListener ("keydown",(e)=>
+        {
+            console.log(e.keyCode);
+            var audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            var key=document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            console.log(
+                "before audio"
+            );
+            if(audio)
+            {
+                console.log(
+                    "audio here"
+                );
+                audio.play();
+                audio.currentTime=0;
+                key.classList.add("playing")
+                return ;
+            }else{
+                return;
+            }
+        });
+
+        function remove(k)
+            {
+                if(k.propertyName !== "transform") return;
+                console.log(k.propertyName);
+                if(k.propertyName="transform")
+                    {
+                        this.classList.remove("playing")
+                    }
+                return
+            }
+        
+        var kk=document.querySelectorAll(".key")
+        kk.forEach((m)=>{
+            m.addEventListener('transitionend',remove)
+        });
+        // console.log(e);
+    
+       
+    </script>
+</body>
+</html>
