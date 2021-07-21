@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,95 +8,93 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/index.css">
 </head>
+
 <body>
-    <div class="keys" >
+    <div class="keys">
         <div class="key" data-key="65">
             <kbd>A</kbd>
-            <span>BOOm</span>
+            <span>Ack</span>
         </div>
         <div class="key" data-key="83">
             <kbd>S</kbd>
-            <span>BOOm</span>
+            <span>Acosnr</span>
         </div>
-        <div class="key"  data-key="68">
+        <div class="key" data-key="68">
             <kbd>D</kbd>
-            <span>BOOm</span>
+            <span>Afrkick</span>
         </div>
-        <div class="key"  data-key="70">
+        <div class="key" data-key="70">
             <kbd>F</kbd>
-            <span>BOOm</span>
+            <span>Akih</span>
         </div>
-        <div class="key"  data-key="71">
+        <div class="key" data-key="71">
             <kbd>G</kbd>
-            <span>BOOm</span>
+            <span>Bgclap</span>
         </div>
-        <div class="key"  data-key="72">
+        <div class="key" data-key="72">
             <kbd>H</kbd>
-            <span>BOOm</span>
+            <span>Hishk</span>
         </div>
-        <div class="key"  data-key="74">
+        <div class="key" data-key="74">
             <kbd>J</kbd>
-            <span>BOOm</span>
+            <span>ride</span>
         </div>
-        <div class="key"  data-key="75">
+        <div class="key" data-key="75">
             <kbd>K</kbd>
-            <span>BOOm</span>
+            <span>Shk</span>
         </div>
         <div class="key" data-key="76">
             <kbd>L</kbd>
-            <span>BOOm</span>
+            <span>Tim</span>
         </div>
-    </div> 
-    <audio data-key="65" src="/Music/https___bestringtones.net_music_Astronomia.mp3 "></audio>
-    <audio data-key="83" src="/Music/https___bestringtones.net_music_Beautiful world - guitar.mp3"></audio>
-    <audio data-key="68" src="/Music/https___bestringtones.net_music_Maroon_5_-_Payphone_-_Fingerstyle_Guitar_Cover_.mp3"></audio>
-    <audio data-key="70" src="/Music/https___bestringtones.net_music_Youve_Got_A_Friend_In Me.mp3"></audio>
-    <audio data-key="71" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
-    <audio data-key="72" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
-    <audio data-key="74" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
-    <audio data-key="75" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
-    <audio data-key="76" src="/Music/https___bestringtones.net_music_Astronomia.mp3"></audio>
+    </div>
+    <audio data-key="65" src="/Music/Ac_K.wav"></audio>
+    <audio data-key="83" src="/Music/Aco_Snr.wav"></audio>
+    <audio data-key="68" src="/Music/Afr_Kick.wav"></audio>
+    <audio data-key="70" src="/Music/Aki_H4.wav"></audio>
+    <audio data-key="71" src="/Music/Bg_Clp.wav"></audio>
+    <audio data-key="72" src="/Music/Hi_Shk6.wav"></audio>
+    <audio data-key="74" src="/Music/Ride_01.wav"></audio>
+    <audio data-key="75" src="/Music/Shk_2.wav"></audio>
+    <audio data-key="76" src="/Music/Tim_1.wav"></audio>
     <script>
-        window.addEventListener ("keydown",(e)=>
-        {
-            console.log(e.keyCode);
-            var audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
-            var key=document.querySelector(`.key[data-key="${e.keyCode}"]`);
-            console.log(
-                "before audio"
-            );
-            if(audio)
-            {
-                console.log(
-                    "audio here"
-                );
-                audio.play();
-                audio.currentTime=0;
-                key.classList.add("playing")
-                return ;
-            }else{
-                return;
-            }
-        });
+      /*  function playsound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add('playing');
+        }
+        function removeTransition(e) {
+            if(e.propertyName !== 'transform') return;
+            Transform
+            this.classList.remove('playing');
+        }
+        const keys = document.querySelectorall('.key');
+        key.forEach(key => key.addEventListener('transitionemd', removeTransition0));
+        window.addEventListener('keydown', playsound); */
+        function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
 
-        function remove(k)
-            {
-                if(k.propertyName !== "transform") return;
-                console.log(k.propertyName);
-                if(k.propertyName="transform")
-                    {
-                        this.classList.remove("playing")
-                    }
-                return
-            }
-        
-        var kk=document.querySelectorAll(".key")
-        kk.forEach((m)=>{
-            m.addEventListener('transitionend',remove)
-        });
-        // console.log(e);
-    
-       
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+
+
     </script>
 </body>
+
 </html>
